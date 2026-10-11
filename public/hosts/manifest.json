@@ -13,11 +13,13 @@
       "text": "Welcome to ScriptLume. I'm Maya. Let's stay close to the passage, keep the conversation natural, and discover what Genesis is actually saying.",
       "wav_file": "maya.wav",
       "mp3_file": "maya.mp3",
-      "audio_seconds": 9.12,
-      "generation_seconds": 22.075,
+      "audio_seconds": 9.211,
+      "generation_seconds": 23.138,
       "temperature": 0.76,
       "top_p": 0.95,
-      "repetition_penalty": 1.2
+      "repetition_penalty": 1.2,
+      "generation_seed": 1101,
+      "attempt": 1
     },
     {
       "key": "david",
@@ -28,11 +30,13 @@
       "text": "I'm David, your Scripture guide. When another passage genuinely clarifies Genesis, I'll bring it in without pulling us away from the chapter.",
       "wav_file": "david.wav",
       "mp3_file": "david.mp3",
-      "audio_seconds": 2.212,
-      "generation_seconds": 36.653,
+      "audio_seconds": 11.08,
+      "generation_seconds": 54.453,
       "temperature": 0.72,
       "top_p": 0.94,
-      "repetition_penalty": 1.2
+      "repetition_penalty": 1.2,
+      "generation_seed": 2203,
+      "attempt": 2
     },
     {
       "key": "naomi",
@@ -43,11 +47,13 @@
       "text": "I'm Naomi. I look at historical, cultural, and literary context, especially when it helps a difficult detail in Scripture become clearer.",
       "wav_file": "naomi.wav",
       "mp3_file": "naomi.mp3",
-      "audio_seconds": 8.357,
-      "generation_seconds": 11.113,
+      "audio_seconds": 8.12,
+      "generation_seconds": 11.393,
       "temperature": 0.74,
       "top_p": 0.94,
-      "repetition_penalty": 1.2
+      "repetition_penalty": 1.2,
+      "generation_seed": 3303,
+      "attempt": 1
     },
     {
       "key": "marcus",
@@ -58,11 +64,13 @@
       "text": "I'm Marcus. I'll help us slow down and reflect on what the passage means for life today, while keeping Scripture itself at the center.",
       "wav_file": "marcus.wav",
       "mp3_file": "marcus.mp3",
-      "audio_seconds": 7.44,
-      "generation_seconds": 10.107,
+      "audio_seconds": 7.794,
+      "generation_seconds": 11.124,
       "temperature": 0.7,
       "top_p": 0.93,
-      "repetition_penalty": 1.21
+      "repetition_penalty": 1.21,
+      "generation_seed": 4404,
+      "attempt": 1
     }
   ]
 }
