@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generate:
@@ -45,6 +45,21 @@ jobs:
         env:
           HF_HUB_DISABLE_TELEMETRY: "1"
         run: python scripts/generate_four_hosts.py
+
+      - name: Publish audition MP3s to repository
+        run: |
+          mkdir -p public/hosts
+          cp output_four_hosts/*.mp3 public/hosts/
+          cp output_four_hosts/manifest.json public/hosts/manifest.json
+          git config user.name "ScriptLume Voice Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/hosts
+          if git diff --cached --quiet; then
+            echo "No host audio changes to publish."
+          else
+            git commit -m "Publish four ScriptLume host audition samples"
+            git push
+          fi
 
       - name: Upload four-host audition
         uses: actions/upload-artifact@v4
