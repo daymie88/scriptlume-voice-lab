@@ -23,7 +23,8 @@ HOSTS = {
         "text": "Welcome to ScriptLume. I'm Maya. Let's stay close to the passage, keep the conversation natural, and discover what Genesis is actually saying.",
         "temperature": 0.76,
         "top_p": 0.95,
-        "repetition_penalty": 1.20
+        "repetition_penalty": 1.20,
+        "seed": 1101
     },
     "david": {
         "display_name": "David",
@@ -33,7 +34,8 @@ HOSTS = {
         "text": "I'm David, your Scripture guide. When another passage genuinely clarifies Genesis, I'll bring it in without pulling us away from the chapter.",
         "temperature": 0.72,
         "top_p": 0.94,
-        "repetition_penalty": 1.20
+        "repetition_penalty": 1.20,
+        "seed": 2202
     },
     "naomi": {
         "display_name": "Naomi",
@@ -43,7 +45,8 @@ HOSTS = {
         "text": "I'm Naomi. I look at historical, cultural, and literary context, especially when it helps a difficult detail in Scripture become clearer.",
         "temperature": 0.74,
         "top_p": 0.94,
-        "repetition_penalty": 1.20
+        "repetition_penalty": 1.20,
+        "seed": 3303
     },
     "marcus": {
         "display_name": "Marcus",
@@ -53,7 +56,8 @@ HOSTS = {
         "text": "I'm Marcus. I'll help us slow down and reflect on what the passage means for life today, while keeping Scripture itself at the center.",
         "temperature": 0.70,
         "top_p": 0.93,
-        "repetition_penalty": 1.21
+        "repetition_penalty": 1.21,
+        "seed": 4404
     }
 }
 
@@ -95,15 +99,31 @@ for key, cfg in HOSTS.items():
     print(f"Seed bytes: {seed_mp3.stat().st_size}")
 
     started = time.time()
-    wav = model.generate(
-        cfg["text"],
-        audio_prompt_path=str(seed_mp3),
-        temperature=cfg["temperature"],
-        top_p=cfg["top_p"],
-        repetition_penalty=cfg["repetition_penalty"],
-        norm_loudness=True,
-    )
-    wav = trim_trailing_silence(wav.cpu(), model.sr)
+    wav = None
+    secs = 0.0
+    attempt_used = None
+    for attempt in range(3):
+        attempt_seed = int(cfg["seed"]) + attempt
+        torch.manual_seed(attempt_seed)
+        print(f"Generation attempt {attempt + 1} with seed {attempt_seed}")
+        candidate = model.generate(
+            cfg["text"],
+            audio_prompt_path=str(seed_mp3),
+            temperature=cfg["temperature"],
+            top_p=cfg["top_p"],
+            repetition_penalty=cfg["repetition_penalty"],
+            norm_loudness=True,
+        )
+        candidate = trim_trailing_silence(candidate.cpu(), model.sr)
+        candidate_secs = candidate.shape[-1] / model.sr
+        print(f"Candidate duration: {candidate_secs:.2f}s")
+        if candidate_secs >= 5.0:
+            wav = candidate
+            secs = candidate_secs
+            attempt_used = attempt + 1
+            break
+    if wav is None:
+        raise RuntimeError(f"{cfg['display_name']} failed duration validation after 3 attempts")
 
     wav_path = OUT / f"{key}.wav"
     mp3_path = OUT / f"{key}.mp3"
@@ -114,7 +134,6 @@ for key, cfg in HOSTS.items():
         "-i", str(wav_path), "-ac", "1", "-b:a", "64k", str(mp3_path)
     ], check=True)
 
-    secs = wav.shape[-1] / model.sr
     elapsed = time.time() - started
     print(f"{cfg['display_name']}: {secs:.2f}s audio, generated+encoded in {elapsed:.1f}s")
 
@@ -131,7 +150,9 @@ for key, cfg in HOSTS.items():
         "generation_seconds": round(elapsed, 3),
         "temperature": cfg["temperature"],
         "top_p": cfg["top_p"],
-        "repetition_penalty": cfg["repetition_penalty"]
+        "repetition_penalty": cfg["repetition_penalty"],
+        "generation_seed": cfg["seed"] + (attempt_used - 1),
+        "attempt": attempt_used
     })
 
 (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
