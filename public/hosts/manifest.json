@@ -1,0 +1,68 @@
+{
+  "engine": "ResembleAI Chatterbox Nano",
+  "device": "cpu",
+  "sample_rate": 24000,
+  "conditioning": "distinct synthetic Kokoro seed references",
+  "hosts": [
+    {
+      "key": "maya",
+      "display_name": "Maya",
+      "role": "Host",
+      "seed_voice": "af_heart",
+      "seed_url": "https://raw.githubusercontent.com/andyart30-web/kokoroTTS/main/examples/kokorotts-af_heart.mp3",
+      "text": "Welcome to ScriptLume. I'm Maya. Let's stay close to the passage, keep the conversation natural, and discover what Genesis is actually saying.",
+      "wav_file": "maya.wav",
+      "mp3_file": "maya.mp3",
+      "audio_seconds": 9.12,
+      "generation_seconds": 22.075,
+      "temperature": 0.76,
+      "top_p": 0.95,
+      "repetition_penalty": 1.2
+    },
+    {
+      "key": "david",
+      "display_name": "David",
+      "role": "Scripture Guide",
+      "seed_voice": "am_michael",
+      "seed_url": "https://raw.githubusercontent.com/andyart30-web/kokoroTTS/main/examples/kokorotts-am_michael.mp3",
+      "text": "I'm David, your Scripture guide. When another passage genuinely clarifies Genesis, I'll bring it in without pulling us away from the chapter.",
+      "wav_file": "david.wav",
+      "mp3_file": "david.mp3",
+      "audio_seconds": 2.212,
+      "generation_seconds": 36.653,
+      "temperature": 0.72,
+      "top_p": 0.94,
+      "repetition_penalty": 1.2
+    },
+    {
+      "key": "naomi",
+      "display_name": "Naomi",
+      "role": "Context Guide",
+      "seed_voice": "bf_emma",
+      "seed_url": "https://raw.githubusercontent.com/andyart30-web/kokoroTTS/main/examples/kokorotts-bf_emma.mp3",
+      "text": "I'm Naomi. I look at historical, cultural, and literary context, especially when it helps a difficult detail in Scripture become clearer.",
+      "wav_file": "naomi.wav",
+      "mp3_file": "naomi.mp3",
+      "audio_seconds": 8.357,
+      "generation_seconds": 11.113,
+      "temperature": 0.74,
+      "top_p": 0.94,
+      "repetition_penalty": 1.2
+    },
+    {
+      "key": "marcus",
+      "display_name": "Marcus",
+      "role": "Reflection Voice",
+      "seed_voice": "am_fenrir",
+      "seed_url": "https://raw.githubusercontent.com/andyart30-web/kokoroTTS/main/examples/kokorotts-am_fenrir.mp3",
+      "text": "I'm Marcus. I'll help us slow down and reflect on what the passage means for life today, while keeping Scripture itself at the center.",
+      "wav_file": "marcus.wav",
+      "mp3_file": "marcus.mp3",
+      "audio_seconds": 7.44,
+      "generation_seconds": 10.107,
+      "temperature": 0.7,
+      "top_p": 0.93,
+      "repetition_penalty": 1.21
+    }
+  ]
+}
