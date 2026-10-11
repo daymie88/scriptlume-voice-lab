@@ -1,0 +1,51 @@
+name: ScriptLume four-host audition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/four-host-audition.yml"
+      - "scripts/generate_four_hosts.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache Hugging Face model files
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: chatterbox-nano-${{ runner.os }}-v1
+
+      - name: Install current official Chatterbox source
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox.git@master"
+
+      - name: Generate four distinct ScriptLume hosts
+        env:
+          HF_HUB_DISABLE_TELEMETRY: "1"
+        run: python scripts/generate_four_hosts.py
+
+      - name: Upload four-host audition
+        uses: actions/upload-artifact@v4
+        with:
+          name: scriptlume-four-host-audition
+          path: output_four_hosts/
+          if-no-files-found: error
+          retention-days: 3
+          compression-level: 0
