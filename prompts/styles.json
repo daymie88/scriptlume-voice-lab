@@ -1,0 +1,30 @@
+{
+  "natural": {
+    "label": "Natural Conversation",
+    "temperature": 0.75,
+    "top_p": 0.95,
+    "repetition_penalty": 1.20,
+    "text": "Right, and notice this. Genesis does not begin with us. It begins with God. That changes the whole frame of the conversation."
+  },
+  "reflective": {
+    "label": "Warm & Reflective",
+    "temperature": 0.65,
+    "top_p": 0.90,
+    "repetition_penalty": 1.20,
+    "text": "Hmm, notice where Genesis begins. Before our plans, our questions, or our worries, the story begins with God. Sit with that for a moment."
+  },
+  "energetic": {
+    "label": "Energetic Discussion",
+    "temperature": 0.90,
+    "top_p": 0.97,
+    "repetition_penalty": 1.18,
+    "text": "Right, and this is the part I love. [chuckle] Genesis does not start with us at the center. It starts with God, and that changes the whole conversation."
+  },
+  "serious": {
+    "label": "Serious / Difficult Passage",
+    "temperature": 0.60,
+    "top_p": 0.88,
+    "repetition_penalty": 1.22,
+    "text": "Genesis chapter three changes the atmosphere. The passage moves into mistrust, shame, blame, and exile. We should slow down here and let the text carry its own weight."
+  }
+}
