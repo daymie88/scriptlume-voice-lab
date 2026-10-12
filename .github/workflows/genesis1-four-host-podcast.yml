@@ -1,0 +1,56 @@
+name: ScriptLume Genesis 1 four-host podcast
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/genesis1-four-host-podcast.yml"
+      - "scripts/generate_genesis1_conversation.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: chatterbox-nano-${{ runner.os }}-v1
+      - name: Install Chatterbox and ffmpeg
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "chatterbox-tts @ git+https://github.com/resemble-ai/chatterbox.git@master"
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      - name: Generate and mix Genesis 1 conversation
+        env:
+          HF_HUB_DISABLE_TELEMETRY: "1"
+        run: python scripts/generate_genesis1_conversation.py
+      - name: Publish finished podcast
+        run: |
+          mkdir -p public/podcasts
+          cp output_podcast/genesis-1-conversation-4hosts.mp3 public/podcasts/
+          cp output_podcast/genesis-1-conversation-4hosts.json public/podcasts/
+          git config user.name "ScriptLume Voice Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add public/podcasts
+          if git diff --cached --quiet; then
+            echo "No podcast changes."
+          else
+            git commit -m "Publish Genesis 1 four-host conversation"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: scriptlume-genesis1-four-host-podcast
+          path: output_podcast/
+          retention-days: 3
+          compression-level: 0
