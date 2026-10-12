@@ -1,0 +1,131 @@
+{
+  "chapter": 1,
+  "mode": "conversation",
+  "hosts": 4,
+  "engine": "Chatterbox Nano",
+  "duration_ms": 103489,
+  "sample_rate": 24000,
+  "turns": [
+    {
+      "index": 0,
+      "speaker": "Maya",
+      "text": "Okay, Genesis 1 starts huge: in the beginning, God creates the heavens and the earth. Before the chapter tells us anything about us, it tells us who the Creator is.",
+      "duration_ms": 12059,
+      "gapBeforeMs": null,
+      "overlapBeforeMs": null,
+      "generation_seed": 5101,
+      "generation_seconds": 33.26,
+      "start_ms": 0,
+      "end_ms": 12059
+    },
+    {
+      "index": 1,
+      "speaker": "David",
+      "text": "Right\u2014and almost immediately you can hear a rhythm. God speaks. Something happens. God names or orders it. Then the text keeps returning to one word: good.",
+      "duration_ms": 11438,
+      "gapBeforeMs": null,
+      "overlapBeforeMs": 150,
+      "generation_seed": 5211,
+      "generation_seconds": 17.4,
+      "start_ms": 11909,
+      "end_ms": 23347
+    },
+    {
+      "index": 2,
+      "speaker": "Maya",
+      "text": "Exactly. It doesn't read like chaos slowly figuring itself out. The story keeps showing order arriving through God's word.",
+      "duration_ms": 7747,
+      "gapBeforeMs": null,
+      "overlapBeforeMs": 140,
+      "generation_seed": 5121,
+      "generation_seconds": 12.22,
+      "start_ms": 23207,
+      "end_ms": 30954
+    },
+    {
+      "index": 3,
+      "speaker": "Naomi",
+      "text": "And notice the lights in the sky. Genesis doesn't treat the sun, moon, and stars as gods. They're created lights with jobs to do\u2014marking days, seasons, and years.",
+      "duration_ms": 10064,
+      "gapBeforeMs": 120,
+      "overlapBeforeMs": null,
+      "generation_seed": 5331,
+      "generation_seconds": 14.95,
+      "start_ms": 31074,
+      "end_ms": 41138
+    },
+    {
+      "index": 4,
+      "speaker": "David",
+      "text": "Then verse 26 slows us down: 'Let's make man in our image.' That's one of the chapter's biggest claims about human identity.",
+      "duration_ms": 10146,
+      "gapBeforeMs": 130,
+      "overlapBeforeMs": null,
+      "generation_seed": 5241,
+      "generation_seconds": 15.08,
+      "start_ms": 41268,
+      "end_ms": 51414
+    },
+    {
+      "index": 5,
+      "speaker": "Maya",
+      "text": "Can I pause you there? Because 'image of God' gets used so often that it can become almost invisible.",
+      "duration_ms": 6571,
+      "gapBeforeMs": null,
+      "overlapBeforeMs": 170,
+      "generation_seed": 5151,
+      "generation_seconds": 10.71,
+      "start_ms": 51244,
+      "end_ms": 57815
+    },
+    {
+      "index": 6,
+      "speaker": "David",
+      "text": "Yes. And whatever debates we have around the phrase, this chapter at least says human dignity and responsibility are received from God. They aren't earned by status, intelligence, wealth, or power.",
+      "duration_ms": 14274,
+      "gapBeforeMs": null,
+      "overlapBeforeMs": 100,
+      "generation_seed": 5261,
+      "generation_seconds": 20.26,
+      "start_ms": 57715,
+      "end_ms": 71989
+    },
+    {
+      "index": 7,
+      "speaker": "Marcus",
+      "text": "Which changes how we look at other people. If the person in front of me bears God-given dignity, I don't get to decide whose life matters based on usefulness or similarity to me.",
+      "duration_ms": 9240,
+      "gapBeforeMs": 120,
+      "overlapBeforeMs": null,
+      "generation_seed": 5471,
+      "generation_seconds": 13.71,
+      "start_ms": 72109,
+      "end_ms": 81349
+    },
+    {
+      "index": 8,
+      "speaker": "Naomi",
+      "text": "Psalm 8 later asks why human beings matter in such a vast creation, and it answers with that same combination: dignity and delegated responsibility under God.",
+      "duration_ms": 10000,
+      "gapBeforeMs": 120,
+      "overlapBeforeMs": null,
+      "generation_seed": 5381,
+      "generation_seconds": 14.54,
+      "start_ms": 81469,
+      "end_ms": 91469
+    },
+    {
+      "index": 9,
+      "speaker": "Maya",
+      "text": "And then Genesis 1 lands on 'very good.' So the chapter leaves us with a world that belongs to God, people who carry real responsibility, and creation presented as gift rather than accident.",
+      "duration_ms": 11870,
+      "gapBeforeMs": 150,
+      "overlapBeforeMs": null,
+      "generation_seed": 5191,
+      "generation_seconds": 16.95,
+      "start_ms": 91619,
+      "end_ms": 103489
+    }
+  ],
+  "audio_file": "genesis-1-conversation-4hosts.mp3"
+}
